@@ -40,7 +40,7 @@ public class CampusService implements CreateCampusPort, DeleteCampusResourcePort
     }
 
     @Override
-    public Campus findByShift(Shift shift) {
+    public List<Campus> findByShift(Shift shift) {
         return findCampusByShiftPort.findByShift(shift);
     }
 

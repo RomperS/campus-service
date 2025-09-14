@@ -14,7 +14,7 @@ public interface CampusRepository {
 
     List<Campus> findAll();
     Optional<Campus> findById(Long id);
-    Optional<Campus> findByShift(Shift shift);
+    List<Campus> findByShift(Shift shift);
 
     void delete(Long id);
 }

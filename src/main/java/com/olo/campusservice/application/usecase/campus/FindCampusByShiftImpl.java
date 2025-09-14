@@ -7,13 +7,15 @@ import com.olo.campusservice.domain.port.inbound.campus.FindCampusByShiftPort;
 import com.olo.campusservice.domain.port.outbound.CampusRepository;
 import lombok.RequiredArgsConstructor;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 public class FindCampusByShiftImpl implements FindCampusByShiftPort {
 
     private final CampusRepository campusRepository;
 
     @Override
-    public Campus findByShift(Shift shift) {
-        return campusRepository.findByShift(shift).orElseThrow(() -> new CampusNotFoundException("Campus not found"));
+    public List<Campus> findByShift(Shift shift) {
+        return campusRepository.findByShift(shift);
     }
 }
