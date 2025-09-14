@@ -7,7 +7,6 @@ public record CampusResource(
         Campus campus,
         Resource resource,
         int quantity,
-        State state,
-        String stateDescription
+        State state
 ) {
 }
