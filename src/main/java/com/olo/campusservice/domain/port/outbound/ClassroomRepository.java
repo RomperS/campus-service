@@ -11,7 +11,7 @@ public interface ClassroomRepository {
 
     Classroom save(Classroom classroom);
 
-    Classroom findAll();
+    List<Classroom> findAll();
     Optional<Classroom> findById(Long id);
     List<Classroom> findByIdentifier(String identifier);
     List<Classroom> findByCampus();
