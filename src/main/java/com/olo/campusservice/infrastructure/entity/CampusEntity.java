@@ -28,7 +28,6 @@ public class CampusEntity {
             name = "campus_shifts",
             joinColumns = @JoinColumn(name = "campus_id")
     )
-
     @Enumerated(EnumType.STRING)
     @Column(name = "shift")
     private Set<Shift> shifts = new HashSet<>();

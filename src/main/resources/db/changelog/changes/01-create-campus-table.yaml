@@ -4,21 +4,18 @@ databaseChangeLog:
       author: Oswaldo Lopez
       changes:
         - createTable:
-            tableName: campus_shifts
+            tableName: campuses
             columns:
               - column:
-                  name: campus_id
+                  name: id
                   type: BIGINT
+                  autoIncrement: true
                   constraints:
+                    primaryKey: true
                     nullable: false
               - column:
-                  name: shifts
+                  name: name
                   type: VARCHAR(255)
-                  constraints:
-                    nullable: false
-        - addForeignKeyConstraint:
-            baseTableName: campus_shifts
-            baseColumnNames: campus_id
-            referencedTableName: campuses
-            referencedColumnNames: id
-            constraintName: fk_campus_shifts_campus
+              - column:
+                  name: address
+                  type: VARCHAR(255)
