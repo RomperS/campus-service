@@ -4,6 +4,6 @@ import com.olo.campusservice.domain.model.Resource;
 
 import java.util.List;
 
-public interface FindResourceBySupplierPort {
-    List<Resource> findBySupplier(String supplier);
+public interface FindResourceByNamePort {
+    List<Resource> findByName(String name);
 }
