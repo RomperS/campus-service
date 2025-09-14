@@ -1,5 +1,7 @@
 databaseChangeLog:
   - include:
-      file: db/changelog/changes/01-create-campuses-table.yaml
+      file: ${changesPath}/01-create-campuses-table.yaml
   - include:
-      file: db/changelog/changes/02-create-campus-shifts-table.yaml
+      file: ${changesPath}/02-create-campus-shifts-table.yaml
+  - include:
+      file: ${changesPath}/03-create-classrooms-table.yaml
