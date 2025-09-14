@@ -8,6 +8,7 @@ import java.util.Optional;
 
 public interface CampusRepository {
     boolean existsByName(String name);
+    boolean existsById(Long id);
 
     Campus save(Campus campus);
 
