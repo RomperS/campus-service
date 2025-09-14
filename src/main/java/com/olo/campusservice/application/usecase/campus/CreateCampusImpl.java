@@ -20,7 +20,8 @@ public class CreateCampusImpl implements CreateCampusPort {
         Campus newCampus = new Campus(
                 null,
                 campus.name(),
-                campus.address()
+                campus.address(),
+                campus.shifts()
         );
 
         return campusRepository.save(newCampus);
