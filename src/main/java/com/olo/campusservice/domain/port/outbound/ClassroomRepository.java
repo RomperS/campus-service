@@ -16,5 +16,5 @@ public interface ClassroomRepository {
     List<Classroom> findByIdentifier(String identifier);
     List<Classroom> findByCampus();
 
-    void deleteById(Long id);
+    void delete(Long id);
 }
