@@ -5,3 +5,5 @@ databaseChangeLog:
       file: ${changesPath}/02-create-campus-shifts-table.yaml
   - include:
       file: ${changesPath}/03-create-classrooms-table.yaml
+  - include:
+      file: ${changesPath}/04-create-resources-table.yaml
