@@ -11,7 +11,7 @@ import java.util.Optional;
 public interface CampusResourceRepository {
     boolean existsByCampusAndResourceAndState(Campus campus, Resource resource, State state);
 
-    CampusResource save(CampusResource newCampusResource);
+    CampusResource save(CampusResource campusResource);
 
     List<CampusResource> findAll();
     Optional<CampusResource> findById(Long id);
