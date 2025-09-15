@@ -1,0 +1,38 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0
+      author: Oswaldo Lopez
+      changes:
+        - createTable:
+            tableName: campus_resources
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: campus_id
+                  type: BIGINT
+              - column:
+                  name: resource_id
+                  type: BIGINT
+              - column:
+                  name: quantity
+                  type: int
+              - column:
+                  name: state
+                  type: varchar(15)
+        - addForeignKeyConstraint:
+            baseTableName: campus_resources
+            baseColumnNames: campus_id
+            referencedTableName: campuses
+            referencedColumnNames: id
+            constraintName: fk_campus_resources_campus
+        - addForeignKeyConstraint:
+            baseTableName: campus_resources
+            baseColumnNames: resource_id
+            referencedTableName: resources
+            referencedColumnNames: id
+            constraintName: fk_campus_resources_resource

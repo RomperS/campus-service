@@ -7,3 +7,5 @@ databaseChangeLog:
       file: ${changesPath}/03-create-classrooms-table.yaml
   - include:
       file: ${changesPath}/04-create-resources-table.yaml
+  - include:
+      file: ${changesPath}/05-create-campus_resources-table.yaml
