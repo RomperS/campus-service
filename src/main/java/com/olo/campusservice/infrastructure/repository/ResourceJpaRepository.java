@@ -1,6 +1,5 @@
 package com.olo.campusservice.infrastructure.repository;
 
-import com.olo.campusservice.domain.model.Resource;
 import com.olo.campusservice.infrastructure.entity.ResourceEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
