@@ -14,7 +14,7 @@ public interface ClassroomRepository {
     List<Classroom> findAll();
     Optional<Classroom> findById(Long id);
     List<Classroom> findByIdentifier(String identifier);
-    List<Classroom> findByCampus();
+    List<Classroom> findByCampus(Campus campus);
 
     void delete(Long id);
 }
