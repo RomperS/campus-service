@@ -1,5 +1,6 @@
 package com.olo.campusservice.domain.model.enums;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.olo.campusservice.domain.exception.value.InvalidShiftValueException;
 
 public enum Shift {
@@ -8,6 +9,7 @@ public enum Shift {
     NIGHT,
     SATURDAY;
 
+    @JsonCreator
     public static Shift fromString(String shift) {
         try {
             return Shift.valueOf(shift.toUpperCase());
