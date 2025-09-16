@@ -18,8 +18,10 @@ public class FindClassroomImpl implements FindClassroomPort {
 
     @Override
     public List<Classroom> find(SearchClassroomCommand command) {
-        if (!campusRepository.existsById(command.campusId())){
-            throw new CampusNotFoundException("Campus not found");
+        if (command.campusId() != null){
+            if (!campusRepository.existsById(command.campusId())){
+                throw new CampusNotFoundException("Campus not found");
+            }
         }
 
         List<Classroom> classrooms = classroomRepository.findAll();

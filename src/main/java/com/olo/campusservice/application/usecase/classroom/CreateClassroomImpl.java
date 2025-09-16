@@ -1,5 +1,6 @@
 package com.olo.campusservice.application.usecase.classroom;
 
+import com.olo.campusservice.domain.command.kafka.PublishClassroomCommand;
 import com.olo.campusservice.domain.exception.exists.CampusNotFoundException;
 import com.olo.campusservice.domain.exception.exists.ClassroomIdentifierTakenException;
 import com.olo.campusservice.domain.exception.value.InvalidCapacityValueException;
@@ -8,6 +9,7 @@ import com.olo.campusservice.domain.model.Classroom;
 import com.olo.campusservice.domain.port.inbound.classroom.CreateClassroomPort;
 import com.olo.campusservice.domain.port.outbound.CampusRepository;
 import com.olo.campusservice.domain.port.outbound.ClassroomRepository;
+import com.olo.campusservice.domain.port.outbound.KafkaServicePort;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -15,6 +17,7 @@ public class CreateClassroomImpl implements CreateClassroomPort {
 
     private final ClassroomRepository classroomRepository;
     private final CampusRepository campusRepository;
+    private final KafkaServicePort kafkaServicePort;
 
     @Override
     public Classroom create(Classroom classroom) {
@@ -35,6 +38,20 @@ public class CreateClassroomImpl implements CreateClassroomPort {
                 campus
         );
 
-        return classroomRepository.save(newClassroom);
+        Classroom savedClassroom = classroomRepository.save(newClassroom);
+
+        sendCreate(savedClassroom.id(), savedClassroom.identifier(), savedClassroom.capacity());
+
+        return savedClassroom;
+    }
+
+    private void sendCreate(Long id, String identifier, Integer capacity) {
+        PublishClassroomCommand command = new PublishClassroomCommand(
+                id,
+                identifier,
+                capacity
+        );
+
+        kafkaServicePort.publishCreateClassroom(command);
     }
 }

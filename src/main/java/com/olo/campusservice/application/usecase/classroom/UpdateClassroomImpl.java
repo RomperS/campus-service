@@ -1,17 +1,20 @@
 package com.olo.campusservice.application.usecase.classroom;
 
 import com.olo.campusservice.domain.command.UpdatedClassroomCommand;
+import com.olo.campusservice.domain.command.kafka.PublishClassroomCommand;
 import com.olo.campusservice.domain.exception.exists.ClassroomIdentifierTakenException;
 import com.olo.campusservice.domain.exception.exists.ClassroomNotFoundException;
 import com.olo.campusservice.domain.model.Classroom;
 import com.olo.campusservice.domain.port.inbound.classroom.UpdateClassroomPort;
 import com.olo.campusservice.domain.port.outbound.ClassroomRepository;
+import com.olo.campusservice.domain.port.outbound.KafkaServicePort;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class UpdateClassroomImpl implements UpdateClassroomPort {
 
     private final ClassroomRepository classroomRepository;
+    private final KafkaServicePort kafkaServicePort;
 
     @Override
     public Classroom updateClassroom(UpdatedClassroomCommand command) {
@@ -37,6 +40,20 @@ public class UpdateClassroomImpl implements UpdateClassroomPort {
                 targetClassroom.campus()
         );
 
-        return classroomRepository.save(updatedClassroom);
+        Classroom savedClassroom = classroomRepository.save(updatedClassroom);
+
+        sendModify(savedClassroom.id(), savedClassroom.identifier(), savedClassroom.capacity());
+
+        return savedClassroom;
+    }
+
+    private void sendModify(Long id, String identifier, Integer capacity){
+        PublishClassroomCommand command = new PublishClassroomCommand(
+                id,
+                identifier,
+                capacity
+        );
+
+        kafkaServicePort.publishUpdateClassroom(command);
     }
 }
