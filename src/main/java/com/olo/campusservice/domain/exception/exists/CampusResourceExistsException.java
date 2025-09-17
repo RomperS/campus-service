@@ -1,8 +1,8 @@
 package com.olo.campusservice.domain.exception.exists;
 
-import com.olo.campusservice.domain.exception.DomainException;
+import com.olo.campusservice.domain.exception.base.ConflicDomainException;
 
-public class CampusResourceExistsException extends DomainException {
+public class CampusResourceExistsException extends ConflicDomainException {
     public CampusResourceExistsException(String message) {
         super(message);
     }
