@@ -18,16 +18,12 @@ public class UpdateResourceImpl implements UpdateResourcePort {
 
         String name = targetResource.name();
         if (resource.name() != null && !resource.name().equals(name)) {
-            if (resourceRepository.existsByName(name)) {
+            if (resourceRepository.existsByName(resource.name())) {
                 throw new ResourceNameTakenException("Resource name is already taken");
             }
             name = resource.name();
         }
 
-        String supplierName = targetResource.supplierName();
-        if (resource.supplierName() != null && !resource.supplierName().equals(supplierName)) {
-            supplierName = resource.supplierName();
-        }
 
         String description = targetResource.description();
         if (resource.description() != null && !resource.description().equals(description)) {
@@ -37,7 +33,7 @@ public class UpdateResourceImpl implements UpdateResourcePort {
         Resource updatedResource = new Resource(
                 targetResource.id(),
                 name,
-                supplierName,
+                targetResource.supplierName(),
                 description
         );
 
