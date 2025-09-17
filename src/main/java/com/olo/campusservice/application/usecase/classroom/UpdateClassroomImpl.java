@@ -3,7 +3,7 @@ package com.olo.campusservice.application.usecase.classroom;
 import com.olo.campusservice.domain.command.UpdatedClassroomCommand;
 import com.olo.campusservice.domain.command.kafka.PublishClassroomCommand;
 import com.olo.campusservice.domain.exception.exists.ClassroomIdentifierTakenException;
-import com.olo.campusservice.domain.exception.exists.ClassroomNotFoundException;
+import com.olo.campusservice.domain.exception.not_found.ClassroomNotFoundException;
 import com.olo.campusservice.domain.exception.value.InvalidIdentifierValueException;
 import com.olo.campusservice.domain.model.Classroom;
 import com.olo.campusservice.domain.port.inbound.classroom.UpdateClassroomPort;

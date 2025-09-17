@@ -1,7 +1,7 @@
 package com.olo.campusservice.application.usecase.campus_resource;
 
 import com.olo.campusservice.domain.command.ModifyQuantityCommand;
-import com.olo.campusservice.domain.exception.exists.CampusResourceNotFoundException;
+import com.olo.campusservice.domain.exception.not_found.CampusResourceNotFoundException;
 import com.olo.campusservice.domain.exception.value.InvalidQuantityException;
 import com.olo.campusservice.domain.model.CampusResource;
 import com.olo.campusservice.domain.port.inbound.campus_resource.ModifyCampusResourceQuantityPort;

@@ -1,9 +1,9 @@
 package com.olo.campusservice.application.usecase.campus_resource;
 
 import com.olo.campusservice.domain.command.CampusResourceCommand;
-import com.olo.campusservice.domain.exception.exists.CampusNotFoundException;
+import com.olo.campusservice.domain.exception.not_found.CampusNotFoundException;
 import com.olo.campusservice.domain.exception.exists.CampusResourceExistsException;
-import com.olo.campusservice.domain.exception.exists.ResourceNotFoundException;
+import com.olo.campusservice.domain.exception.not_found.ResourceNotFoundException;
 import com.olo.campusservice.domain.model.Campus;
 import com.olo.campusservice.domain.model.CampusResource;
 import com.olo.campusservice.domain.model.Resource;

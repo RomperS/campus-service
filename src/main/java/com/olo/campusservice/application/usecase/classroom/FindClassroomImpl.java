@@ -1,7 +1,7 @@
 package com.olo.campusservice.application.usecase.classroom;
 
 import com.olo.campusservice.domain.command.SearchClassroomCommand;
-import com.olo.campusservice.domain.exception.exists.CampusNotFoundException;
+import com.olo.campusservice.domain.exception.not_found.CampusNotFoundException;
 import com.olo.campusservice.domain.model.Classroom;
 import com.olo.campusservice.domain.port.inbound.classroom.FindClassroomPort;
 import com.olo.campusservice.domain.port.outbound.CampusRepository;

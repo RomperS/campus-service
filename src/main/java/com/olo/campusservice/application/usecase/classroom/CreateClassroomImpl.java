@@ -1,7 +1,7 @@
 package com.olo.campusservice.application.usecase.classroom;
 
 import com.olo.campusservice.domain.command.kafka.PublishClassroomCommand;
-import com.olo.campusservice.domain.exception.exists.CampusNotFoundException;
+import com.olo.campusservice.domain.exception.not_found.CampusNotFoundException;
 import com.olo.campusservice.domain.exception.exists.ClassroomIdentifierTakenException;
 import com.olo.campusservice.domain.exception.value.InvalidCapacityValueException;
 import com.olo.campusservice.domain.model.Campus;

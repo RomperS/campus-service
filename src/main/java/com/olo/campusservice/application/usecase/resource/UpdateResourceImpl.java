@@ -1,8 +1,8 @@
 package com.olo.campusservice.application.usecase.resource;
 
-import com.olo.campusservice.domain.exception.DomainException;
+import com.olo.campusservice.domain.exception.base.DomainException;
 import com.olo.campusservice.domain.exception.exists.ResourceNameTakenException;
-import com.olo.campusservice.domain.exception.exists.ResourceNotFoundException;
+import com.olo.campusservice.domain.exception.not_found.ResourceNotFoundException;
 import com.olo.campusservice.domain.exception.value.InvalidDescriptionValueException;
 import com.olo.campusservice.domain.exception.value.InvalidNameValueException;
 import com.olo.campusservice.domain.model.Resource;

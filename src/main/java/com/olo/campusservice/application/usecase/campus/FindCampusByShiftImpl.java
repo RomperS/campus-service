@@ -1,6 +1,5 @@
 package com.olo.campusservice.application.usecase.campus;
 
-import com.olo.campusservice.domain.exception.exists.CampusNotFoundException;
 import com.olo.campusservice.domain.model.Campus;
 import com.olo.campusservice.domain.model.enums.Shift;
 import com.olo.campusservice.domain.port.inbound.campus.FindCampusByShiftPort;
