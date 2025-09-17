@@ -18,7 +18,7 @@ public class ModifyCampusResourceQuantityImpl implements ModifyCampusResourceQua
         CampusResource campusResource = campusResourceRepository.findById(command.id())
                 .orElseThrow(() -> new CampusResourceNotFoundException("Campus resource not found"));
 
-        if (command.quantity() >= 0){
+        if (command.quantity() <= 0){
             throw new InvalidQuantityException("Invalid quantity");
         }
 
