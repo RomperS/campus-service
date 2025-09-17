@@ -4,6 +4,7 @@ import com.olo.campusservice.domain.command.UpdatedClassroomCommand;
 import com.olo.campusservice.domain.command.kafka.PublishClassroomCommand;
 import com.olo.campusservice.domain.exception.exists.ClassroomIdentifierTakenException;
 import com.olo.campusservice.domain.exception.exists.ClassroomNotFoundException;
+import com.olo.campusservice.domain.exception.value.InvalidIdentifierValueException;
 import com.olo.campusservice.domain.model.Classroom;
 import com.olo.campusservice.domain.port.inbound.classroom.UpdateClassroomPort;
 import com.olo.campusservice.domain.port.outbound.ClassroomRepository;
@@ -22,6 +23,9 @@ public class UpdateClassroomImpl implements UpdateClassroomPort {
 
         String identifier = targetClassroom.identifier();
         if (command.identifier() != null && !command.identifier().equals(identifier)) {
+            if (command.identifier().isBlank()){
+                throw new InvalidIdentifierValueException("identifier is empty");
+            }
             if (classroomRepository.existsByIdentifierInCampus(command.identifier(), targetClassroom.campus())){
                 throw new ClassroomIdentifierTakenException("Identifier is already taken");
             }
