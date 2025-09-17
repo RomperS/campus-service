@@ -1,0 +1,9 @@
+databaseChangeLog:
+  - changeSet:
+      id: 6
+      author: Oswaldo Lopez
+      changes:
+        - addUniqueConstraint:
+            tableName: classrooms
+            columnNames: identifier, campus_id
+            constraintName: uq_classrooms_identifier_campus

@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: 7
+      author: Oswaldo Lopez
+      changes:
+        - dropUniqueConstraint:
+            tableName: classrooms
+            constraintName: uq_classrooms_identifier
