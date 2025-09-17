@@ -1,8 +1,8 @@
 package com.olo.campusservice.domain.exception.value;
 
-import com.olo.campusservice.domain.exception.DomainException;
+import com.olo.campusservice.domain.exception.base.InvalidDomainValueException;
 
-public class InvalidNameValueException extends DomainException {
+public class InvalidNameValueException extends InvalidDomainValueException {
     public InvalidNameValueException(String message) {
         super(message);
     }

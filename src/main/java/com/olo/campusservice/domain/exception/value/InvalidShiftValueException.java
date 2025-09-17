@@ -1,8 +1,8 @@
 package com.olo.campusservice.domain.exception.value;
 
-import com.olo.campusservice.domain.exception.DomainException;
+import com.olo.campusservice.domain.exception.base.InvalidDomainValueException;
 
-public class InvalidShiftValueException extends DomainException {
+public class InvalidShiftValueException extends InvalidDomainValueException {
     public InvalidShiftValueException(String message) {
         super(message);
     }
