@@ -6,19 +6,16 @@ import com.olo.campusservice.infrastructure.entity.ResourceEntity;
 import com.olo.campusservice.infrastructure.mapper.ResourceMapper;
 import com.olo.campusservice.infrastructure.repository.ResourceJpaRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
+@Component
 @RequiredArgsConstructor
 public class ResourceRepositoryAdapter implements ResourceRepository {
 
     private final ResourceJpaRepository resourceJpaRepository;
-
-    @Override
-    public boolean existsById(Long id) {
-        return resourceJpaRepository.existsById(id);
-    }
 
     @Override
     public boolean existsByName(String name) {
