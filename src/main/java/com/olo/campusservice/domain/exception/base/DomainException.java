@@ -1,4 +1,4 @@
-package com.olo.campusservice.domain.exception;
+package com.olo.campusservice.domain.exception.base;
 
 public class DomainException extends RuntimeException {
     public DomainException(String message) {
