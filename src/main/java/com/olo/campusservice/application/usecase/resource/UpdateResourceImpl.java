@@ -1,7 +1,10 @@
 package com.olo.campusservice.application.usecase.resource;
 
+import com.olo.campusservice.domain.exception.DomainException;
 import com.olo.campusservice.domain.exception.exists.ResourceNameTakenException;
 import com.olo.campusservice.domain.exception.exists.ResourceNotFoundException;
+import com.olo.campusservice.domain.exception.value.InvalidDescriptionValueException;
+import com.olo.campusservice.domain.exception.value.InvalidNameValueException;
 import com.olo.campusservice.domain.model.Resource;
 import com.olo.campusservice.domain.port.inbound.resource.UpdateResourcePort;
 import com.olo.campusservice.domain.port.outbound.ResourceRepository;
@@ -18,15 +21,18 @@ public class UpdateResourceImpl implements UpdateResourcePort {
 
         String name = targetResource.name();
         if (resource.name() != null && !resource.name().equals(name)) {
+            notBlankValidation(resource.name(), new InvalidNameValueException("Resource name must not be blank."));
+
             if (resourceRepository.existsByName(resource.name())) {
                 throw new ResourceNameTakenException("Resource name is already taken");
             }
             name = resource.name();
         }
 
-
         String description = targetResource.description();
         if (resource.description() != null && !resource.description().equals(description)) {
+            notBlankValidation(resource.description(), new InvalidDescriptionValueException("Resource description must not be blank."));
+
             description = resource.description();
         }
 
@@ -38,5 +44,11 @@ public class UpdateResourceImpl implements UpdateResourcePort {
         );
 
         return resourceRepository.save(updatedResource);
+    }
+
+    private void notBlankValidation(String value, DomainException ex) {
+        if (value.isBlank()){
+            throw ex;
+        }
     }
 }
