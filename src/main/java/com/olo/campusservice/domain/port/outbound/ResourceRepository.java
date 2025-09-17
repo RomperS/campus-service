@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ResourceRepository {
-    boolean existsById(Long id);
     boolean existsByName(String name);
 
     Resource save(Resource resource);
